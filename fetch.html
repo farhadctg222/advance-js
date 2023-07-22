@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body><div>
+    <input type="text" name="" id="search"><button id="btn" >search</button></div>
+    <p id="para"></p>
+    <script>
+      const a = document.getElementById('btn').addEventListener('click',function(){
+        fetch('https://api.lyrics.ovh/suggest/baby')
+        .then(res => res.json())
+        .then(data => {
+            const bb = data.data
+            console.log(bb)
+            for (let index = 0; index < bb.length; index++) {
+                const element = bb[index];
+              const b = document.getElementById('para')
+              const li = document.createElement('li')
+              li.innerHTML = `${element.title}<button>${element.id}</button> <audio controls>
+                <source src="${element.preview}" type="audio/ogg">`
+              b.appendChild(li)
+                
+            }
+        })
+      })
+    //    fetch('https://api.lyrics.ovh/suggest/baby')
+    //    .then(res => res.json())
+    //    .then(data => display(data.data))
+    //    const display = song =>{
+    //     s
+    //    }
+       
+           
+    </script>
+</body>
+</html>
